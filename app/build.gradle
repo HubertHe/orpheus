@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
@@ -14,7 +14,6 @@ android {
     buildToolsVersion "22.0.1"
 
     defaultConfig {
-        applicationId "com.hippo.orpheus"
         minSdkVersion 11
         targetSdkVersion 22
         versionCode 1
@@ -25,6 +24,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
     }
 }
 
@@ -41,7 +44,7 @@ install {
         pom {
             project {
                 packaging 'aar'
-                name 'Orpheus for android'
+                name 'Orpheus'
                 url siteUrl
                 licenses {
                     license {
@@ -94,7 +97,7 @@ bintray {
     configurations = ['archives']
     pkg {
         repo = "maven"
-        name = "Orpheus for android"                // project name in jcenter
+        name = "orpheus"                // project name in jcenter
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = ["Apache-2.0"]
